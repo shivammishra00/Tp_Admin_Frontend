@@ -24,11 +24,24 @@ function UserLogin() {
         await axios.post(`http://localhost:5000/api/admin/users/user_login`, inputdata)
             .then(res => {
                 console.log(res)
+                // console.log(res.data.result[0].rolename)
                 if (res.data.loginStatus) {
                     toast.success(res.data.Message, { position: "top-center" })
                     
                     localStorage.setItem("valid", true) // value stor in localsorage
-                    navigate('/user_detailes/'+ res.data.uid)
+                    // navigate('/user_detailes/'+ res.data.uid)
+
+                    // ===== niche val code jab ek hi sign in page ho role base  ====//
+
+                    if(res.data.result[0].rolename==="admin"){
+                        navigate("/dashboard")
+                    }
+                    else if(res.data.result[0].rolename === "user"){
+                        navigate(`/user_detailes/${res.data.uid}`)
+                    }
+                    else{
+                        navigate("/")
+                    }
                 }
                 else {
                     seterror(res.data.Error)

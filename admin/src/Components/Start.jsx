@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function Start() {
     const navigate = useNavigate();
 
-    ///ue page default route me chalega to yadi user ya admin me se koi bhi allredy login rahega to ye functionality use usi ke page me redirect kar degi ///
+    ///ye page default route me chalega to yadi user ya admin me se koi bhi alredy login rahega to ye functionality use usi ke page me redirect kar degi ///
 
     useEffect(() => {
         axios.get(`http://localhost:5000/api/allverify/verify`)

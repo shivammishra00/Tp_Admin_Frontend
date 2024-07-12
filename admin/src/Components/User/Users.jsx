@@ -134,7 +134,7 @@ function Users() {
   const getUserRoleAssign = async (viewRoleuid) => {
     await axios.get(`http://localhost:5000/api/admin/roleassign/checkrole/${viewRoleuid}`)
       .then(res => {
-        // console.log(res)
+        console.log(res)
         if (res.data.Status) {
           setroleAssignList(res.data.result)
         }
